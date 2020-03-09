@@ -1,10 +1,10 @@
 package kg.megacom.course_spring.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
-import org.springframework.web.bind.annotation.GetMapping;
 
 import javax.persistence.*;
-import java.lang.annotation.Target;
+import java.util.List;
 
 @Data
 @Entity
@@ -17,9 +17,8 @@ public class User {
     private String password;
     private String login;
 
-    @ManyToOne
-    @JoinColumn(name = "role_id")
     private Role role;
+
 
 
 }

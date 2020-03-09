@@ -16,8 +16,13 @@ public class Course {
     private Date startDate;
     private Date endDate;
 
-    @OneToMany
+    @ManyToOne
     @JoinColumn(name = "teacher_id")
     @JsonIgnore
     private Teacher teacher;
+
+    @ManyToOne
+    @JoinColumn(name = "student_id")
+    @JsonIgnore
+    private Student student;
 }

@@ -1,5 +1,6 @@
 package kg.megacom.course_spring.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -14,6 +15,10 @@ public class Role {
     private Long id;
     private String name;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    @JsonIgnore
+    private User user;
 
 
 }

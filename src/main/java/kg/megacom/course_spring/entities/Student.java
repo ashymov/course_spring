@@ -14,8 +14,5 @@ public class Student {
     private Long id;
     private String name;
 
-    @OneToMany
-    @JoinColumn(name = "student_id")
-    @JsonIgnore
-    private Course course;
+
 }
