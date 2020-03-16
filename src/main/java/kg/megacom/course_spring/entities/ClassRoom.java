@@ -8,16 +8,14 @@ import java.util.List;
 
 @Data
 @Entity
-@Table(name = "users")
-public class User {
+@Table(name = "classroom")
+public class ClassRoom {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
-    private String password;
-    private String login;
 
-
-
-
+    @ManyToOne
+    @JoinColumn(name = "coursedays_id")
+    private CourseDays courseDays;
 }

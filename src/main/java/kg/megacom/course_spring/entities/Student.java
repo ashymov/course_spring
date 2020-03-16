@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Data
@@ -13,6 +14,12 @@ public class Student {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
+
+    @ManyToMany
+    @JoinTable(name = "course_student",
+            joinColumns = @JoinColumn(name = "course_course_id"),
+            inverseJoinColumns = @JoinColumn(name = "student_student_id"))
+    private List<Course> course;
 
 
 }

@@ -1,6 +1,6 @@
 package kg.megacom.course_spring.controllers;
 
-import kg.megacom.course_spring.dto.UserDto;
+import kg.megacom.course_spring.dto.*;
 import kg.megacom.course_spring.entities.*;
 import kg.megacom.course_spring.services.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,8 +25,8 @@ public class AdminController {
     }
 
     @PostMapping(value = "/teacher/save")
-    public ResponseEntity<?> saveTeacher(@RequestBody Teacher teacher){
-        return new ResponseEntity<>(adminService.saveTeacher(teacher),HttpStatus.OK);
+    public ResponseEntity<?> saveTeacher(@RequestBody TeacherDto teacherDto){
+        return new ResponseEntity<>(adminService.saveTeacher(teacherDto),HttpStatus.OK);
     }
     @GetMapping(value = "/teacher/get")
     public ResponseEntity<?> getTeacher(){
@@ -34,29 +34,38 @@ public class AdminController {
     }
 
     @PostMapping(value = "/student/save")
-    public ResponseEntity<?> saveStudent(@RequestBody Student student){
-        return new ResponseEntity<>(adminService.saveStudent(student),HttpStatus.OK);
+    public ResponseEntity<?> saveStudent(@RequestBody StudentDto studentDto){
+        return new ResponseEntity<>(adminService.saveStudent(studentDto),HttpStatus.OK);
     }
     @GetMapping(value = "/student/get")
     public ResponseEntity<?> getStudent(){
         return new ResponseEntity<>(adminService.getStudent(),HttpStatus.OK);
     }
 
-//    @PostMapping(value = "/role/save")
-//    public ResponseEntity<?> saveRole(@RequestBody Role role){
-//        return new ResponseEntity<>(adminService.saveRole(role),HttpStatus.OK);
-//    }
+    @PostMapping(value = "/role/save")
+    public ResponseEntity<?> saveRole(@RequestBody RoleDto roleDto){
+        return new ResponseEntity<>(adminService.saveRole(roleDto),HttpStatus.OK);
+    }
     @GetMapping(value = "/role/get")
     public ResponseEntity<?> getRole(){
         return new ResponseEntity<>(adminService.getRole(),HttpStatus.OK);
     }
 
     @PostMapping(value = "/course/save")
-    public ResponseEntity<?> saveCourse(@RequestBody Course course){
-        return new ResponseEntity<>(adminService.saveCourse(course),HttpStatus.OK);
+    public ResponseEntity<?> saveCourse(@RequestBody CourseDto courseDto){
+        return new ResponseEntity<>(adminService.saveCourse(courseDto),HttpStatus.OK);
     }
     @GetMapping(value = "/course/get")
     public ResponseEntity<?> getCourse(){
         return new ResponseEntity<>(adminService.getCourse(),HttpStatus.OK);
+    }
+    @GetMapping(value = "/course/getfuture")
+    public ResponseEntity<?> getFutureCourse(){
+        return new ResponseEntity<>(adminService.getFutureCourse(),HttpStatus.OK);
+    }
+
+    @PostMapping("student/register")
+    public ResponseEntity<?> registerStudent(@RequestBody  CourseDto courseDto,StudentDto studentDto) {
+        return new ResponseEntity<>(adminService.registerStudent(studentDto, courseDto),HttpStatus.OK);
     }
 }

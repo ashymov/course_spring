@@ -8,6 +8,7 @@ import kg.megacom.course_spring.services.AdminService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -27,6 +28,8 @@ public class AdminServiceImpl implements AdminService {
 
     @Autowired
     private CourseRepository courseRepository;
+    @Autowired
+    private ClassRoomRepository classRoomRepository;
 
     @Override
     public UserDto saveUser(UserDto userDto) {
@@ -34,7 +37,6 @@ public class AdminServiceImpl implements AdminService {
         User user=ClassMapper.INSTANCE.UserDtoToUser(userDto);
         user=userRepository.save(user);
         userDto=ClassMapper.INSTANCE.UserToUserDto(user);
-        userDto.setRole(user.getRole());
         return userDto;
     }
 
@@ -47,6 +49,7 @@ public class AdminServiceImpl implements AdminService {
     public StudentDto saveStudent(StudentDto studentDto) {
         Student student =ClassMapper.INSTANCE.SrudentDtoToStudent(studentDto);
         student=studentRepository.save(student);
+        student.setCourse(getCourse());
         studentDto=ClassMapper.INSTANCE.StudentToStudentDto(student);
         return studentDto;
     }
@@ -68,6 +71,12 @@ public class AdminServiceImpl implements AdminService {
     @Override
     public List<Course> getCourse() {
         return courseRepository.findAll();
+    }
+
+    @Override
+    public List<CourseDto> getFutureCourse() {
+        List<Course> courses = courseRepository.findAllByStartDateGreaterThan(new Date());
+        return ClassMapper.INSTANCE.coursesToCourseDtos(courses);
     }
 
     @Override
@@ -94,5 +103,39 @@ public class AdminServiceImpl implements AdminService {
     @Override
     public List<Teacher> getTeacher() {
         return teacherRepository.findAll();
+    }
+
+    @Override
+    public Student registerStudent(StudentDto studentDto, CourseDto courseDto) {
+
+        Student student=studentRepository.findById(studentDto.getId()).orElse(null);
+
+        if (student==null){
+            throw new RuntimeException("Студента с таким id нет!");
+        }
+        Course course=courseRepository.findById(courseDto.getId()).orElse(null);
+        if (course==null) {
+            throw new RuntimeException("Курса с таким id нет!");
+        }
+        List<Course> courseList=student.getCourse();
+        courseList.add(course);
+        student.setCourse(courseList);
+        student=studentRepository.save(student);
+        studentDto=ClassMapper.INSTANCE.StudentToStudentDto(student);
+        return student;
+
+    }
+
+    @Override
+    public ClassRoomDto saveClassRoom(ClassRoomDto classRoomDto) {
+        ClassRoom classRoom=ClassMapper.INSTANCE.ClassRoomDtoToClassRoom(classRoomDto);
+        classRoom=classRoomRepository.save(classRoom);
+        classRoomDto=ClassMapper.INSTANCE.ClassRoomDtoToClassRoom(classRoom);
+        return classRoomDto;
+    }
+
+    @Override
+    public List<ClassRoom> getClassRomm() {
+        return null;
     }
 }

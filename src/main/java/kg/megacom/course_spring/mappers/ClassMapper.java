@@ -6,6 +6,8 @@ import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
+import java.util.List;
+
 @Mapper
 
 public interface ClassMapper {
@@ -28,8 +30,14 @@ public interface ClassMapper {
     Course CourseDtoToCourse(CourseDto courseDto);
     @InheritInverseConfiguration
     CourseDto CourseToCourseDto(Course course);
+    List<CourseDto> coursesToCourseDtos(List<Course> courses);
+
 
     Teacher TeacherDtoToTeacher(TeacherDto teacherDto);
     @InheritInverseConfiguration
     TeacherDto TeacherToTeacherDto(Teacher teacher);
+
+    ClassRoom ClassRoomDtoToClassRoom(ClassRoomDto classRoomDto);
+    @InheritInverseConfiguration
+    ClassRoomDto ClassRoomDtoToClassRoom(ClassRoom classRoom);
 }

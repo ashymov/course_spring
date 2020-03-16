@@ -21,8 +21,5 @@ public class Course {
     @JsonIgnore
     private Teacher teacher;
 
-    @ManyToOne
-    @JoinColumn(name = "student_id")
-    @JsonIgnore
-    private Student student;
+
 }

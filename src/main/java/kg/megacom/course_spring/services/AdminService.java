@@ -14,10 +14,17 @@ public interface AdminService {
 
     CourseDto saveCourse(CourseDto courseDto);
     List<Course> getCourse();
+    List<CourseDto> getFutureCourse();
 
     RoleDto saveRole(RoleDto roleDto);
     List<Role> getRole();
 
     TeacherDto saveTeacher(TeacherDto teacherDto);
     List<Teacher> getTeacher();
+
+
+    Student registerStudent(StudentDto studentDto,CourseDto courseDto);
+
+    ClassRoomDto saveClassRoom(ClassRoomDto classRoomDto);
+    List<ClassRoom> getClassRomm();
 }
