@@ -12,6 +12,7 @@ import java.util.List;
 public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "student_id")
     private Long id;
     private String name;
 

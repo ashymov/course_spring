@@ -7,24 +7,30 @@ import java.util.List;
 
 public interface AdminService {
     UserDto saveUser(UserDto userDto);
-    List<User> getUser();
+    List<UserDto> getUser();
 
     StudentDto saveStudent(StudentDto studentDto);
-    List<Student> getStudent();
+    List<StudentDto> getStudent();
 
     CourseDto saveCourse(CourseDto courseDto);
-    List<Course> getCourse();
+    List<CourseDto> getCourse();
     List<CourseDto> getFutureCourse();
 
     RoleDto saveRole(RoleDto roleDto);
-    List<Role> getRole();
+    List<RoleDto> getRole();
 
     TeacherDto saveTeacher(TeacherDto teacherDto);
-    List<Teacher> getTeacher();
+    List<TeacherDto> getTeacher();
 
 
-    Student registerStudent(StudentDto studentDto,CourseDto courseDto);
+    StudentDto registerStudent(StudentDto studentDto,CourseDto courseDto);
 
     ClassRoomDto saveClassRoom(ClassRoomDto classRoomDto);
-    List<ClassRoom> getClassRomm();
+    List<ClassRoomDto> getClassRoom();
+
+    CourseDaysDto saveCourseDays(CourseDaysDto courseDaysDto);
+    List<CourseDaysDto> getCourseDays();
+
+    DaysDto saveDays(DaysDto daysDto);
+    List<DaysDto> getDays();
 }

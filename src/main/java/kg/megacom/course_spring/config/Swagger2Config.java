@@ -34,9 +34,6 @@ public class Swagger2Config {
         return new ApiInfoBuilder().title("Spring Boot REST API")
 
                 .description("Simple shop REST API")
-                .contact(new Contact("Ramesh Fadatare", "www.javaguides.net", "ramesh24fadatare@gmail.com"))
-                .license("Apache 2.0")
-                .licenseUrl("http://www.apache.org/licenses/LICENSE-2.0.html")
                 .version("1.0.0")
                 .build();
     }

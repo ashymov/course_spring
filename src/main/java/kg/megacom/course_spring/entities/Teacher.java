@@ -10,6 +10,7 @@ import javax.persistence.*;
 public class Teacher {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "teacher_id")
     private Long id;
     private String name;
 }

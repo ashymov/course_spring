@@ -18,26 +18,40 @@ public interface ClassMapper {
     User UserDtoToUser(UserDto userDto);
     @InheritInverseConfiguration
     UserDto UserToUserDto(User user);
+    List<UserDto> UsersToUserDtos(List<User> users);
 
     Role RoleDtoToRole(RoleDto roleDto);
     @InheritInverseConfiguration
     RoleDto RoleToRoleDto(Role role);
+    List<RoleDto> RolesToRoleDtos(List<Role> roles);
 
-    Student SrudentDtoToStudent(StudentDto studentDto);
+    Student StudentDtoToStudent(StudentDto studentDto);
     @InheritInverseConfiguration
     StudentDto StudentToStudentDto(Student student);
+    List<StudentDto> StudentsToStudentDtos(List<Student> students);
 
     Course CourseDtoToCourse(CourseDto courseDto);
     @InheritInverseConfiguration
     CourseDto CourseToCourseDto(Course course);
-    List<CourseDto> coursesToCourseDtos(List<Course> courses);
+    List<CourseDto> CoursesToCourseDtos(List<Course> courses);
 
 
     Teacher TeacherDtoToTeacher(TeacherDto teacherDto);
     @InheritInverseConfiguration
     TeacherDto TeacherToTeacherDto(Teacher teacher);
+    List<TeacherDto> TeachersToTeachersDtos(List<Teacher> teachers);
+
+    Days DaysDtoToDays(DaysDto daysDto);
+    DaysDto DaysToDaysDto(Days days);
+    List<DaysDto> DaysToDayDtos(List<Days> days);
 
     ClassRoom ClassRoomDtoToClassRoom(ClassRoomDto classRoomDto);
     @InheritInverseConfiguration
-    ClassRoomDto ClassRoomDtoToClassRoom(ClassRoom classRoom);
+    ClassRoomDto ClassRoomToClassRoomDto(ClassRoom classRoom);
+    List<ClassRoomDto> ClassRoomsToClassRoomDtos(List<ClassRoom> classRooms);
+
+    CourseDays CourseDaysDtoToCourseDays(CourseDaysDto courseDaysDto);
+    @InheritInverseConfiguration
+    CourseDaysDto CourseDaysToCourseDaysDto(CourseDays courseDays);
+    List<CourseDaysDto> CourseDaysToCourseDaysDtos(List<CourseDays> courseDays);
 }

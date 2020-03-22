@@ -11,6 +11,7 @@ import java.util.Date;
 public class Course {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "course_id")
     private Long id;
     private String name;
     private Date startDate;

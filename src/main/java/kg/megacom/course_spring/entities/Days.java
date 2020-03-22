@@ -10,6 +10,7 @@ import javax.persistence.*;
 public class Days {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "day_id")
     private Long id;
     private String name;
     private boolean isActive;

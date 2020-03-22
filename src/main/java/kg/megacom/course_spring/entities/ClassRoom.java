@@ -12,10 +12,8 @@ import java.util.List;
 public class ClassRoom {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "clasroom_id")
     private Long id;
     private String name;
 
-    @ManyToOne
-    @JoinColumn(name = "coursedays_id")
-    private CourseDays courseDays;
 }
